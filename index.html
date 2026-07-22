@@ -1,325 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Organic and Material
-​Chemistry Laboratory | 台大楊吉水教授有機與材料化學實驗室</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #1f2937;
-      line-height: 1.7;
-      background: #f8fafc;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 8%;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    nav .logo {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #0f3d68;
-    }
-
-    nav a {
-      margin-left: 22px;
-      color: #374151;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #2563eb;
-    }
-
-    .hero {
-      min-height: 74vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 10%;
-      color: white;
-      background:
-        linear-gradient(120deg, rgba(7, 37, 67, 0.96), rgba(15, 87, 126, 0.82)),
-        url("images/lab-background.jpg") center/cover;
-    }
-
-    .hero-content {
-      max-width: 760px;
-    }
-
-    .hero h1 {
-      margin-bottom: 12px;
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      line-height: 1.05;
-    }
-
-    .hero p {
-      max-width: 650px;
-      font-size: 1.2rem;
-      opacity: 0.95;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 22px;
-      color: #0f3d68;
-      background: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main {
-      max-width: 1150px;
-      margin: auto;
-      padding: 30px 24px 80px;
-    }
-
-    section {
-      padding: 70px 0;
-    }
-
-    h2 {
-      margin-bottom: 12px;
-      font-size: 2.2rem;
-      color: #0f3d68;
-    }
-
-    .section-intro {
-      max-width: 760px;
-      margin-bottom: 34px;
-      color: #64748b;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      padding: 26px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      color: #1d4f7a;
-    }
-
-    .member {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .member-photo {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 50%;
-      background: #dbeafe;
-    }
-
-    .publication {
-      margin-bottom: 18px;
-      padding: 18px 22px;
-      background: white;
-      border-left: 5px solid #2563eb;
-      border-radius: 5px;
-    }
-
-    .contact {
-      padding: 36px;
-      color: white;
-      background: #0f3d68;
-      border-radius: 12px;
-    }
-
-    footer {
-      padding: 25px;
-      color: #cbd5e1;
-      text-align: center;
-      background: #071d30;
-    }
-
-    @media (max-width: 800px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .member {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav .links {
-        display: none;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Organic and Material Chemistry Laboratory at National Taiwan University">
+  <title>Home | Jye-Shane Yang Laboratory</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
+<header class="site-header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <strong>JYE-SHANE YANG</strong>
+      <span>ORGANIC &amp; MATERIAL CHEMISTRY LABORATORY</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="professor.html">Professor</a></li>
+      <li class="dropdown">
+        <button class="dropdown-button" type="button">Research</button>
+        <ul class="dropdown-menu">
+          <li><a href="research.html">Research overview</a></li>
+          <li><a href="research.html#gfpc">GFPc Analogs</a></li>
+          <li><a href="research.html#luminescent">Multi-Responsive Luminescent Material</a></li>
+          <li><a href="research.html#machine">Molecular Machine</a></li>
+          <li><a href="research.html#supercapacitor">Supercapacitor</a></li>
+        </ul>
+      </li>
+      <li><a href="members.html">Members</a></li>
+      <li class="dropdown">
+        <button class="dropdown-button" type="button">Publications</button>
+        <ul class="dropdown-menu">
+          <li><a href="publications.html">Recent publications</a></li>
+          <li><a href="publications.html#2020s">2020–present</a></li>
+          <li><a href="publications.html#2010s">2010–2019</a></li>
+          <li><a href="publications.html#2000s">2000–2009</a></li>
+          <li><a href="publications.html#patents">Patents</a></li>
+        </ul>
+      </li>
+      <li><a href="photographs.html">Photograph</a></li>
+    </ul>
+  </div>
+</header>
 
-  <nav>
-    <div class="logo">JSY Laboratory</div>
-
-    <div class="links">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#members">Members</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <header class="hero">
+<section class="hero">
+  <div class="container hero-inner">
     <div class="hero-content">
-      <h1>JSY Laboratory</h1>
-
+      <span class="eyebrow">National Taiwan University · Department of Chemistry</span>
+      <h1>Organic and Material Chemistry Laboratory</h1>
+      <h2>台大楊吉水教授有機與材料化學實驗室</h2>
       <p>
-        Department of Chemistry, National Taiwan University
+        Molecular design, responsive luminescent materials, molecular machines
+        and functional materials for energy applications.
       </p>
-
-      <p>
-        We explore molecular structures, functional materials,
-        chemical dynamics and emerging phenomena through
-        experimental and computational approaches.
-      </p>
-
-      <a class="button" href="#research">Explore Our Research</a>
+      <div class="hero-actions">
+        <a class="button primary" href="research.html">Explore our research</a>
+        <a class="button secondary" href="members.html">Meet the team</a>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
+<main>
+  <section class="section compact">
+    <div class="container">
+      <article class="news-panel">
+        <span class="tag">New publication</span>
+        <h3>Blue–Green–Yellow Thermochromic Fluorescence and Bubble-Propelled Crystal Motion Driven by Molecular Gear Rotations</h3>
+        <p>Replace this text and link with the latest publication information.</p>
+        <a class="card-link" href="publications.html">Read publication details</a>
+      </article>
+    </div>
+  </section>
 
-    <section id="about">
-      <h2>About the Laboratory</h2>
-
-      <p class="section-intro">
-        Introduce the laboratory's research vision, history and
-        scientific goals here. This paragraph can later be replaced
-        with the formal laboratory introduction.
-      </p>
-    </section>
-
-    <section id="research">
-      <h2>Research</h2>
-
-      <p class="section-intro">
-        Briefly introduce the major research directions of the laboratory.
-      </p>
-
-      <div class="cards">
-        <article class="card">
-          <h3>Functional Materials</h3>
-          <p>
-            Design and characterization of molecular and crystalline
-            materials with stimulus-responsive properties.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Structural Dynamics</h3>
-          <p>
-            Investigation of structural transformations using diffraction,
-            spectroscopy and time-resolved measurements.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Computational Chemistry</h3>
-          <p>
-            First-principles calculations and molecular simulations
-            for understanding structure–property relationships.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="members">
-      <h2>Members</h2>
-
-      <div class="card member">
-        <img
-          class="member-photo"
-          src="images/professor.jpg"
-          alt="Principal investigator"
-        >
-
-        <div>
-          <h3>Prof. Jye-Shane Yang</h3>
-          <p>Principal Investigator</p>
-          <p>
-            Add the professor's education, research interests,
-            professional experience and contact information here.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="publications">
-      <h2>Selected Publications</h2>
-
-      <div class="publication">
-        <strong>Publication title</strong><br>
-        Author A, Author B and Author C,
-        <em>Journal Name</em>, 2026.
-      </div>
-
-      <div class="publication">
-        <strong>Publication title</strong><br>
-        Author A, Author B and Author C,
-        <em>Journal Name</em>, 2025.
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="contact">
-        <h2 style="color: white;">Contact</h2>
-
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Research Areas</h2>
         <p>
-          Department of Chemistry<br>
-          National Taiwan University<br>
-          Taipei, Taiwan
-        </p>
-
-        <p>
-          Email:
-          <a href="mailto:example@ntu.edu.tw" style="color: white;">
-            example@ntu.edu.tw
-          </a>
+          The structure follows the current laboratory website while using a
+          cleaner responsive layout suitable for GitHub Pages.
         </p>
       </div>
-    </section>
 
-  </main>
+      <div class="grid grid-2">
+        <article class="card research-card">
+          <div class="visual"><img src="assets/images/gfpc.svg" alt="GFPc analogs illustration"></div>
+          <div class="card-body">
+            <h3>GFPc Analogs</h3>
+            <p>Photophysical and photochemical properties of fluorescent GFP chromophore analogs.</p>
+            <a class="card-link" href="research.html#gfpc">More</a>
+          </div>
+        </article>
 
-  <footer>
-    © 2026 JSY Laboratory, National Taiwan University
-  </footer>
+        <article class="card research-card">
+          <div class="visual"><img src="assets/images/luminescent.svg" alt="Luminescent materials illustration"></div>
+          <div class="card-body">
+            <h3>Multi-Responsive Luminescent Materials</h3>
+            <p>Solid-state emission controlled by molecular packing, stimuli and host–guest interactions.</p>
+            <a class="card-link" href="research.html#luminescent">More</a>
+          </div>
+        </article>
 
+        <article class="card research-card">
+          <div class="visual"><img src="assets/images/machine.svg" alt="Molecular machine illustration"></div>
+          <div class="card-body">
+            <h3>Molecular Machines</h3>
+            <p>Light- and redox-driven molecular switches, brakes and mechanically responsive molecules.</p>
+            <a class="card-link" href="research.html#machine">More</a>
+          </div>
+        </article>
+
+        <article class="card research-card">
+          <div class="visual"><img src="assets/images/supercapacitor.svg" alt="Supercapacitor illustration"></div>
+          <div class="card-body">
+            <h3>Supercapacitor Materials</h3>
+            <p>Conducting polymers and hybrid electrode materials for high-performance energy storage.</p>
+            <a class="card-link" href="research.html#supercapacitor">More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-strip">
+    <div class="container contact-grid">
+      <div>
+        <h2>Contact Us</h2>
+        <p>
+          Department of Chemistry, National Taiwan University<br>
+          No. 1, Sec. 4, Roosevelt Road, Taipei 10617, Taiwan
+        </p>
+      </div>
+      <ul class="contact-list">
+        <li><strong>Office</strong><br>Room 670 · +886-2-3366-1649</li>
+        <li><strong>Laboratory</strong><br>Room 669 · +886-2-3366-1650 / 3845</li>
+        <li><strong>Email</strong><br><a href="mailto:replace-me@ntu.edu.tw">replace-me@ntu.edu.tw</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Jye-Shane Yang Laboratory, National Taiwan University</span>
+    <span>Built with GitHub Pages</span>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
