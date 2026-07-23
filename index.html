@@ -581,15 +581,14 @@ body.wsite-page-index .wsite-background-5 {
 						
 
 <div><div style="height:20px;overflow:hidden"></div>
-<div class="native-weebly-gallery" id="native-gallery-855841737606623185" tabindex="0">
+<div class="native-weebly-gallery" id="native-gallery-2026" tabindex="0" data-github-folder="2026photo">
   <div class="native-weebly-stage">
-    <button class="native-weebly-control native-weebly-prev" type="button" aria-label="Previous photo">&#10094;</button>
-    <img class="native-weebly-main" src="uploads/1/2/2/8/122804110/line-album-2025-250729-41.jpg" alt="Lab photograph" loading="lazy" />
-    <button class="native-weebly-control native-weebly-next" type="button" aria-label="Next photo">&#10095;</button>
+    <button class="native-weebly-control native-weebly-prev" type="button" aria-label="Previous photo" disabled>&#10094;</button>
+    <img class="native-weebly-main" alt="2026 lab photograph" loading="lazy" hidden />
+    <button class="native-weebly-control native-weebly-next" type="button" aria-label="Next photo" disabled>&#10095;</button>
   </div>
-  <div class="native-weebly-status" aria-live="polite">1 / 15</div>
-  <div class="native-weebly-thumbnails" aria-label="Photo thumbnails"></div>
-  <script type="application/json" class="native-weebly-data">[{"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-41.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-40.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-53.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-60.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-49.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-73.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-70.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-7.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-11.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-20.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-26.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-46.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-47.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-82.jpg"}, {"url": "uploads/1/2/2/8/122804110/line-album-2025-250729-84.jpg"}]</script>
+  <div class="native-weebly-status" aria-live="polite">Loading 2026 photos...</div>
+  <div class="native-weebly-thumbnails" aria-label="2026 photo thumbnails"></div>
 </div>
 
 <div style="height:20px;overflow:hidden"></div></div>
@@ -988,68 +987,166 @@ body.wsite-page-index .wsite-background-5 {
 (function () {
   "use strict";
 
-  function initialiseGallery(gallery) {
-    var dataNode = gallery.querySelector(".native-weebly-data");
+  var GITHUB_OWNER = "JSYLab1218";
+  var GITHUB_REPOSITORY = "jsylab1218.github.io";
+  var GITHUB_BRANCH = "main";
+  var IMAGE_EXTENSION = /\.(?:avif|gif|jpe?g|png|webp)$/i;
+
+  function encodePath(path) {
+    return path.split("/").map(encodeURIComponent).join("/");
+  }
+
+  function naturalFileSort(a, b) {
+    return a.name.localeCompare(b.name, undefined, {
+      numeric: true,
+      sensitivity: "base"
+    });
+  }
+
+  async function readGitHubFolder(folder) {
+    var apiUrl =
+      "https://api.github.com/repos/" +
+      encodeURIComponent(GITHUB_OWNER) + "/" +
+      encodeURIComponent(GITHUB_REPOSITORY) +
+      "/contents/" + encodePath(folder) +
+      "?ref=" + encodeURIComponent(GITHUB_BRANCH);
+
+    var response = await fetch(apiUrl, {
+      cache: "no-store",
+      headers: {
+        "Accept": "application/vnd.github+json"
+      }
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Folder not found: " + folder);
+      }
+      throw new Error("GitHub returned HTTP " + response.status + ".");
+    }
+
+    var entries = await response.json();
+    if (!Array.isArray(entries)) {
+      throw new Error(folder + " is not a folder.");
+    }
+
+    return entries
+      .filter(function (entry) {
+        return entry.type === "file" && IMAGE_EXTENSION.test(entry.name);
+      })
+      .sort(naturalFileSort)
+      .map(function (entry) {
+        return {
+          url: encodePath(folder) + "/" + encodeURIComponent(entry.name),
+          caption: entry.name
+        };
+      });
+  }
+
+  async function initialiseGallery(gallery) {
     var mainImage = gallery.querySelector(".native-weebly-main");
     var status = gallery.querySelector(".native-weebly-status");
     var thumbnails = gallery.querySelector(".native-weebly-thumbnails");
     var previous = gallery.querySelector(".native-weebly-prev");
     var next = gallery.querySelector(".native-weebly-next");
-    var images;
+    var folder = gallery.getAttribute("data-github-folder");
+    var images = [];
     var current = 0;
 
-    if (!dataNode || !mainImage || !status || !thumbnails || !previous || !next) return;
+    if (!mainImage || !status || !thumbnails || !previous || !next || !folder) return;
 
-    try {
-      images = JSON.parse(dataNode.textContent);
-    } catch (error) {
-      console.error("Cannot read gallery data", error);
-      return;
+    function setControlsEnabled(enabled) {
+      previous.disabled = !enabled;
+      next.disabled = !enabled;
     }
 
-    if (!Array.isArray(images) || images.length === 0) return;
+    function showError(message) {
+      setControlsEnabled(false);
+      mainImage.hidden = true;
+      mainImage.removeAttribute("src");
+      status.textContent = message;
+    }
 
     function show(index) {
+      if (!images.length) return;
+
       current = (index + images.length) % images.length;
+      mainImage.hidden = false;
       mainImage.src = images[current].url;
-      mainImage.alt = images[current].caption || ("Lab photograph " + (current + 1));
+      mainImage.alt = images[current].caption || ("2026 lab photograph " + (current + 1));
       status.textContent = (current + 1) + " / " + images.length;
 
       thumbnails.querySelectorAll(".native-weebly-thumb").forEach(function (button, i) {
         var active = i === current;
         button.classList.toggle("is-active", active);
         button.setAttribute("aria-current", active ? "true" : "false");
+
         if (active) {
-          button.scrollIntoView({behavior: "smooth", block: "nearest", inline: "nearest"});
+          button.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest"
+          });
         }
       });
+    }
+
+    setControlsEnabled(false);
+
+    try {
+      images = await readGitHubFolder(folder);
+    } catch (error) {
+      console.error("Cannot load home photograph gallery", error);
+      showError(error.message);
+      return;
+    }
+
+    if (!images.length) {
+      showError("No image files found in " + folder + ".");
+      return;
     }
 
     images.forEach(function (image, index) {
       var button = document.createElement("button");
       var thumbnail = document.createElement("img");
+
       button.type = "button";
       button.className = "native-weebly-thumb";
       button.setAttribute("aria-label", "Show photo " + (index + 1));
+
       thumbnail.src = image.url;
       thumbnail.alt = "";
       thumbnail.loading = "lazy";
+
       button.appendChild(thumbnail);
-      button.addEventListener("click", function () { show(index); });
+      button.addEventListener("click", function () {
+        show(index);
+      });
       thumbnails.appendChild(button);
     });
 
-    previous.addEventListener("click", function () { show(current - 1); });
-    next.addEventListener("click", function () { show(current + 1); });
+    setControlsEnabled(images.length > 1);
+
+    previous.addEventListener("click", function () {
+      show(current - 1);
+    });
+
+    next.addEventListener("click", function () {
+      show(current + 1);
+    });
+
     gallery.addEventListener("keydown", function (event) {
       if (event.key === "ArrowLeft") show(current - 1);
       if (event.key === "ArrowRight") show(current + 1);
     });
+
     show(0);
   }
 
   function start() {
-    document.querySelectorAll(".native-weebly-gallery").forEach(initialiseGallery);
+    document.querySelectorAll(".native-weebly-gallery[data-github-folder]").forEach(function (gallery) {
+      initialiseGallery(gallery);
+    });
   }
 
   if (document.readyState === "loading") {
