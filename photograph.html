@@ -202,6 +202,68 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
+
+<style id="force-visible-navigation">
+/*
+ * GitHub Pages 修正：
+ * Weebly Birdseye 主題原本會先隱藏 logo 與桌面選單，
+ * 再由 JavaScript 執行淡入。若初始化失敗，導覽列會永久透明。
+ */
+.birdseye-header,
+.birdseye-header .nav-wrap,
+.birdseye-header .container,
+.birdseye-header .logo,
+.birdseye-header .nav,
+.birdseye-header .desktop-nav,
+.birdseye-header .wsite-menu-default,
+.birdseye-header .wsite-menu-item-wrap,
+.birdseye-header .wsite-menu-item,
+.birdseye-header #wsite-title,
+.birdseye-header .hamburger {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.birdseye-header {
+  display: block !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+.birdseye-header .logo,
+.birdseye-header .desktop-nav {
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+.birdseye-header #wsite-title,
+.birdseye-header .wsite-menu-item {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.birdseye-header .wsite-menu-item:hover,
+.birdseye-header .wsite-menu-item:focus,
+.birdseye-header #active > .wsite-menu-item {
+  color: #ffffff !important;
+  opacity: 0.78 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .birdseye-header .desktop-nav {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .birdseye-header .hamburger {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+</style>
+
 </head>
 	<body class="header-page  wsite-page-photograph  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light"><div class="wrapper">
     <div class="birdseye-header">
