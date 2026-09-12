@@ -321,6 +321,171 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
+
+<style id="mobile-image-layout-fix-20260912">
+/* Mobile-only image/layout refinements. Desktop (>= 761px) is intentionally untouched. */
+@media screen and (max-width: 760px) {
+  /* Keep narrow-screen layouts from inheriting desktop table geometry. */
+  #wsite-content .wsite-multicol-table-wrap {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+  #wsite-content .wsite-multicol-table,
+  #wsite-content .wsite-multicol-tbody,
+  #wsite-content .wsite-multicol-tr {
+    display: block !important;
+    width: 100% !important;
+  }
+  #wsite-content td.wsite-multicol-col {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* General content images: preserve aspect ratio and center them on phones. */
+  #wsite-content .wsite-image {
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  #wsite-content .wsite-image > a {
+    display: inline-block !important;
+    max-width: 100% !important;
+  }
+  #wsite-content .wsite-image img {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Header photos: use a predictable phone crop instead of desktop zoom/invalid positions. */
+  body.header-page .banner-wrap .wsite-header-section-bg-image {
+    min-height: 300px !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 50% 42% !important;
+  }
+
+  /* Home hero: a taller crop works better with the title block on a portrait screen. */
+  body.wsite-page-index .banner-wrap .wsite-header-section-bg-image {
+    min-height: 470px !important;
+    background-position: 50% 48% !important;
+  }
+
+  /* Professor hero: bias the crop to the portrait on the right side of the source image. */
+  body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image {
+    min-height: 390px !important;
+    background-position: 68% 36% !important;
+  }
+
+  /* Home publication graphic: readable without touching the desktop rule. */
+  body.wsite-page-index #wsite-content img[src*="TSH et al ACIE 2026.jpg"] {
+    width: 100% !important;
+    max-width: 500px !important;
+    height: auto !important;
+  }
+
+  /* Home contact icons: keep the three symbols compact and centered. */
+  body.wsite-page-index #wsite-content img[src*="maps-and-flags-1_orig.png"],
+  body.wsite-page-index #wsite-content img[src*="phone-1_orig.png"],
+  body.wsite-page-index #wsite-content img[src*="mail-1_orig.png"] {
+    width: 68px !important;
+    height: 68px !important;
+    max-width: 68px !important;
+    object-fit: contain !important;
+    margin: 0 auto 8px !important;
+  }
+
+  /* Member portraits: equal phone-sized cards prevent very tall/large source files from dominating. */
+  body.wsite-page-members #wsite-content .wsite-image-border-thick {
+    width: 240px !important;
+    max-width: 72vw !important;
+    margin: 4px auto 10px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  body.wsite-page-members #wsite-content .wsite-image-border-thick > a {
+    display: block !important;
+    width: 100% !important;
+  }
+  body.wsite-page-members #wsite-content .wsite-image-border-thick img {
+    width: 240px !important;
+    height: 240px !important;
+    max-width: 72vw !important;
+    max-height: 72vw !important;
+    margin: 0 auto !important;
+    object-fit: cover !important;
+    object-position: 50% 25% !important;
+  }
+
+  /* Large custom tables should scroll instead of being clipped by the theme container. */
+  body.wsite-page-members #wsite-content .wcustomhtml,
+  body.wsite-page-professor #wsite-content .wcustomhtml {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  body.wsite-page-members #wsite-content .wcustomhtml table,
+  body.wsite-page-professor #wsite-content .wcustomhtml table {
+    min-width: 680px !important;
+  }
+
+  /* Research/publication figures use all useful phone width while remaining uncropped. */
+  body.wsite-page-research #wsite-content .wsite-image img,
+  body.wsite-page-publications #wsite-content .wsite-image img,
+  body.wsite-page-1990-1999 #wsite-content .wsite-image img,
+  body.wsite-page-2000-2004 #wsite-content .wsite-image img,
+  body.wsite-page-2005-2009 #wsite-content .wsite-image img,
+  body.wsite-page-2010-2014 #wsite-content .wsite-image img,
+  body.wsite-page-2015-2019 #wsite-content .wsite-image img,
+  body.wsite-page-2020-2024 #wsite-content .wsite-image img,
+  body.wsite-page-2025-2029 #wsite-content .wsite-image img,
+  body.wsite-page-gfpc-analogs #wsite-content .wsite-image img,
+  body.wsite-page-multi-responsive-luminescent-material #wsite-content .wsite-image img,
+  body.wsite-page-molecular-machine #wsite-content .wsite-image img,
+  body.wsite-page-supercapacitor #wsite-content .wsite-image img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Native galleries: center the stage and keep portrait photos from becoming oversized. */
+  body.wsite-page-index .native-weebly-gallery,
+  body.wsite-page-photograph .native-photo-gallery {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  body.wsite-page-index .native-weebly-stage,
+  body.wsite-page-photograph .native-photo-stage {
+    width: 100% !important;
+    min-height: 190px !important;
+  }
+  body.wsite-page-index .native-weebly-main,
+  body.wsite-page-photograph .native-photo-main {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 68vh !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+</style>
 </head>
 	<body class="no-header-page  wsite-page-gfpc-analogs  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
@@ -398,8 +563,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
     <div class="footer-wrap">
       <div class="container">
-        <div class="footer">Create a <a target="_top" href="http:///">free web site</a> with <a target="_top" href="http:///" title="免費網站">Weebly</a></div>
-      </div><!-- end container -->
+</div><!-- end container -->
     </div><!-- end footer-wrap -->
   </div><!-- /.wrapper -->
 
