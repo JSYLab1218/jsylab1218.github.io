@@ -7,13 +7,48 @@
   </url>
 
   <url>
-    <loc>https://jsylab1218.github.io/professor.html</loc>
-    <priority>0.8</priority>
+    <loc>https://jsylab1218.github.io/1990-1999.html</loc>
+    <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://jsylab1218.github.io/research.html</loc>
-    <priority>0.8</priority>
+    <loc>https://jsylab1218.github.io/2000-2004.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/2005-2009.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/2010-2014.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/2015-2019.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/2020-2024.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/2025-2029.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/chinese-articles.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/gfpc-analogs.html</loc>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -22,17 +57,7 @@
   </url>
 
   <url>
-    <loc>https://jsylab1218.github.io/publications.html</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://jsylab1218.github.io/photograph.html</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://jsylab1218.github.io/gfpc-analogs.html</loc>
+    <loc>https://jsylab1218.github.io/molecular-machine.html</loc>
     <priority>0.6</priority>
   </url>
 
@@ -42,18 +67,33 @@
   </url>
 
   <url>
-    <loc>https://jsylab1218.github.io/molecular-machine.html</loc>
+    <loc>https://jsylab1218.github.io/patent.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/photograph.html</loc>
     <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/professor.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/publications.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://jsylab1218.github.io/research.html</loc>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://jsylab1218.github.io/supercapacitor.html</loc>
     <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://jsylab1218.github.io/patent.html</loc>
-    <priority>0.5</priority>
   </url>
 
 </urlset>
