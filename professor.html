@@ -487,41 +487,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
-
-<style id="professor-time-hero-image-style">
-/* Use a real image element as the Professor hero background so Weebly cannot overwrite it. */
-body.wsite-page-professor .banner-wrap .wsite-header-section.wsite-section-bg-image {
-  position: relative !important;
-  overflow: hidden !important;
-  background-image: none !important;
-  background-color: transparent !important;
-}
-
-body.wsite-page-professor #professor-time-hero-image {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  object-fit: cover !important;
-  object-position: 50% 50% !important;
-  pointer-events: none !important;
-}
-
-body.wsite-page-professor .banner-wrap .wsite-header-section .wsite-section-content {
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-@media screen and (max-width: 760px) {
-  body.wsite-page-professor #professor-time-hero-image {
-    object-position: 68% 36% !important;
-  }
-}
-</style>
-
 </head>
 	<body class="header-page  wsite-page-professor  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
@@ -564,8 +529,7 @@ body.wsite-page-professor .banner-wrap .wsite-header-section .wsite-section-cont
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;position: relative;overflow: hidden;background-color: transparent;" >
-		<img id="professor-time-hero-image" src="background/JSYday.jpg" alt="" aria-hidden="true" />
+	<div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px; background-color: transparent;">
 		<div class="wsite-section-content">
 			
           <div class="container">
@@ -1276,36 +1240,42 @@ th {
 })();
 </script>
 
+
+
+
 <script id="local-time-hero-background">
 (function () {
   "use strict";
 
-  function imageForCurrentTime() {
-    var hour = new Date().getHours();
-    if (hour >= 6 && hour < 16) return "background/JSYday.jpg";
-    if (hour >= 16 && hour < 19) return "background/JSYafternoon.jpg";
-    return "background/JSYnight.jpg";
-  }
-
   function updateHeroBackground() {
-    var heroImage = document.getElementById("professor-time-hero-image");
-    if (!heroImage) return;
+    var hero = document.querySelector(
+      ".wsite-header-section.wsite-section-bg-image"
+    );
 
-    var relativePath = imageForCurrentTime();
-    var resolvedPath = new URL(relativePath, document.baseURI).href;
+    if (!hero) return;
 
-    if (heroImage.src !== resolvedPath) {
-      heroImage.src = resolvedPath;
+    // Uses each visitor's own device/browser local time zone.
+    var hour = new Date().getHours();
+    var image;
+
+    if (hour >= 6 && hour < 16) {
+      image = "background/JSYday.jpg";
+    } else if (hour >= 16 && hour < 19) {
+      image = "background/JSYafternoon.jpg";
+    } else {
+      image = "background/JSYnight.jpg";
     }
+
+    // Set the complete background here so no old Weebly inline values remain relevant.
+    hero.style.backgroundImage = 'url("' + image + '")';
+    hero.style.backgroundRepeat = "no-repeat";
+    hero.style.backgroundPosition = "50% 50%";
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundColor = "transparent";
   }
 
   updateHeroBackground();
-  document.addEventListener("DOMContentLoaded", updateHeroBackground);
   window.addEventListener("load", updateHeroBackground);
-  window.addEventListener("pageshow", updateHeroBackground);
-  document.addEventListener("visibilitychange", function () {
-    if (!document.hidden) updateHeroBackground();
-  });
   window.setInterval(updateHeroBackground, 60000);
 })();
 </script>
