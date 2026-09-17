@@ -616,7 +616,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="background-image: url(&quot;uploads/1/2/2/8/122804110/background-images/996334386.jpg&quot;) ;background-repeat: no-repeat ;background-position: 51.06% 31.97% ;background-size: 130% ;background-color: transparent ;background-size: 130%;" >
+	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="background-image: url(&quot;background/day.jpg&quot;) ;background-repeat: no-repeat ;background-position: 51.06% 31.97% ;background-size: 130% ;background-color: transparent ;background-size: 130%;" >
 		<div class="wsite-section-content">
 			
           <div class="container">
@@ -1530,6 +1530,40 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   window.addEventListener("resize", function () {
     if (window.innerWidth > 760) closeMenu();
   });
+})();
+</script>
+
+
+<script id="local-time-hero-background">
+(function () {
+  "use strict";
+
+  function updateHeroBackground() {
+    var hero = document.querySelector(
+      ".wsite-header-section.wsite-section-bg-image"
+    );
+
+    if (!hero) return;
+
+    // Uses each visitor's own device/browser local time zone.
+    var hour = new Date().getHours();
+    var image;
+
+    if (hour >= 6 && hour < 16) {
+      image = "background/day.jpg";
+    } else if (hour >= 16 && hour < 19) {
+      image = "background/afternoon.jpg";
+    } else {
+      image = "background/night.jpg";
+    }
+
+    hero.style.backgroundImage = 'url("' + image + '")';
+  }
+
+  updateHeroBackground();
+
+  // Re-check periodically so a page left open across a time boundary updates itself.
+  window.setInterval(updateHeroBackground, 60000);
 })();
 </script>
 
