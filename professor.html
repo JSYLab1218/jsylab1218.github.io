@@ -492,16 +492,18 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 /* Professor hero crop fix: keep the portrait on the right, but stop trimming the top of the head. */
 @media screen and (min-width: 761px) {
   body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image {
-    background-size: 100% !important;
-    background-position: 60% 5% !important;
+    background-size: 80% !important;
+    background-position: 60% 0% !important;
   }
 }
 
 @media screen and (max-width: 760px) {
   body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image {
     min-height: 420px !important;
-    background-size: cover !important;
-    background-position: 72% 0% !important;
+    background-repeat: no-repeat !important;
+
+    background-size: auto 100% !important;
+    background-position: 72% top !important;
   }
 }
 </style>
