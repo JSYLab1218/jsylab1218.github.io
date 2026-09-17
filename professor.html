@@ -381,10 +381,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     background-position: 50% 48% !important;
   }
 
-  /* Professor hero: bias the crop to the portrait on the right side of the source image. */
+  /* Professor hero on phones: show the full image height and keep extra room above the head. */
   body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image {
-    min-height: 390px !important;
-    background-position: 68% 36% !important;
+    min-height: 420px !important;
+    background-repeat: no-repeat !important;
+    background-size: auto 96% !important;
+    background-position: 72% 12px !important;
   }
 
   /* Home publication graphic: readable without touching the desktop rule. */
@@ -487,26 +489,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
-
-<style id="professor-hero-crop-fix-20260918">
-/* Professor hero crop fix: keep the portrait on the right, but stop trimming the top of the head. */
-@media screen and (min-width: 761px) {
-  body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image {
-    background-size: 80% !important;
-    background-position: 60% 0% !important;
-  }
-}
-
-@media screen and (max-width: 760px) {
-  body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image {
-    min-height: 420px !important;
-    background-repeat: no-repeat !important;
-
-    background-size: auto 100% !important;
-    background-position: 72% top !important;
-  }
-}
-</style>
 </head>
 	<body class="header-page  wsite-page-professor  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
@@ -549,7 +531,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="background-image: url(&quot;background/JSYday.jpg&quot;) ;background-repeat: no-repeat ;background-position: 51.06% 31.97% ;background-size: 130% ;background-color: transparent ;background-size: 130%;" >
+	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="background-image: url(&quot;background/JSYday.jpg&quot;) ;background-repeat: no-repeat ;background-position: 51.06% 31.97% ;background-size: 130% ;background-color: transparent ;" >
 		<div class="wsite-section-content">
 			
           <div class="container">
