@@ -487,45 +487,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 }
 </style>
 
-<style id="professor-time-hero-background-style">
-/* Time-based Professor hero background. !important prevents the Weebly theme
-   from restoring its original inline/background-image value after page load. */
-html[data-professor-hero-time="day"] #professor-time-hero {
-  background-image: url("background/JSYday.jpg") !important;
-}
-html[data-professor-hero-time="afternoon"] #professor-time-hero {
-  background-image: url("background/JSYafternoon.jpg") !important;
-}
-html[data-professor-hero-time="night"] #professor-time-hero {
-  background-image: url("background/JSYnight.jpg") !important;
-}
-</style>
-<script id="professor-time-hero-early-script">
-(function () {
-  "use strict";
-
-  function getProfessorHeroPeriod(date) {
-    var hour = date.getHours();
-    if (hour >= 6 && hour < 16) return "day";
-    if (hour >= 16 && hour < 19) return "afternoon";
-    return "night";
-  }
-
-  function updateProfessorHeroTime() {
-    document.documentElement.setAttribute(
-      "data-professor-hero-time",
-      getProfessorHeroPeriod(new Date())
-    );
-  }
-
-  // Run before the hero is painted so the correct image is selected immediately.
-  updateProfessorHeroTime();
-
-  // Expose only the updater needed by the small footer timer below.
-  window.updateProfessorHeroTime = updateProfessorHeroTime;
-})();
-</script>
-
 </head>
 	<body class="header-page  wsite-page-professor  full-width-body-off header-overlay-off alt-nav-off  wsite-theme-light">
 
@@ -568,7 +529,7 @@ html[data-professor-hero-time="night"] #professor-time-hero {
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div id="professor-time-hero" class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;background-image: url(&quot;background/JSYday.jpg&quot;) ;background-repeat: no-repeat ;background-position: NaN% NaN% ;background-size: 110% ;background-color: transparent ;background-size: 110%;" >
+	<div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;background-image: url(&quot;background/JSYday.jpg&quot;) ;background-repeat: no-repeat ;background-position: NaN% NaN% ;background-size: 110% ;background-color: transparent ;background-size: 110%;" >
 		<div class="wsite-section-content">
 			
           <div class="container">
@@ -1281,25 +1242,37 @@ th {
 
 
 
-<script id="professor-time-hero-refresh-script">
+
+<script id="local-time-hero-background">
 (function () {
   "use strict";
 
-  function refreshProfessorHero() {
-    if (typeof window.updateProfessorHeroTime === "function") {
-      window.updateProfessorHeroTime();
+  function updateHeroBackground() {
+    var hero = document.querySelector(
+      ".wsite-header-section.wsite-section-bg-image"
+    );
+
+    if (!hero) return;
+
+    // Uses each visitor's own device/browser local time zone.
+    var hour = new Date().getHours();
+    var image;
+
+    if (hour >= 6 && hour < 16) {
+      image = "background/JSYday.jpg";
+    } else if (hour >= 16 && hour < 19) {
+      image = "background/JSYafternoon.jpg";
+    } else {
+      image = "background/JSYnight.jpg";
     }
+
+    hero.style.backgroundImage = 'url("' + image + '")';
   }
 
-  // Re-apply after DOM/theme initialization and whenever the page becomes active.
-  refreshProfessorHero();
-  window.addEventListener("load", refreshProfessorHero);
-  document.addEventListener("visibilitychange", function () {
-    if (!document.hidden) refreshProfessorHero();
-  });
+  updateHeroBackground();
 
-  // Handles a page left open across 06:00, 16:00, or 19:00.
-  window.setInterval(refreshProfessorHero, 30000);
+  // Re-check periodically so a page left open across a time boundary updates itself.
+  window.setInterval(updateHeroBackground, 60000);
 })();
 </script>
 
