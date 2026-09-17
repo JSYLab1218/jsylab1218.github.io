@@ -528,7 +528,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;background-image: url(&quot;uploads/1/2/2/8/122804110/background-images/755158650.jpg&quot;) ;background-repeat: no-repeat ;background-position: NaN% NaN% ;background-size: 110% ;background-color: transparent ;background-size: 110%;" >
+	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;background-image: url(&quot;background/JSYday.jpg&quot;) ;background-repeat: no-repeat ;background-position: NaN% NaN% ;background-size: 110% ;background-color: transparent ;background-size: 110%;" >
 		<div class="wsite-section-content">
 			
           <div class="container">
@@ -1236,6 +1236,38 @@ th {
   window.addEventListener("resize", function () {
     if (window.innerWidth > 760) closeMenu();
   });
+})();
+</script>
+
+
+<script id="local-time-professor-hero-background">
+(function () {
+  "use strict";
+
+  function updateProfessorHeroBackground() {
+    var hero = document.querySelector(
+      ".wsite-header-section.wsite-section-bg-image"
+    );
+
+    if (!hero) return;
+
+    // Uses each visitor's own device/browser local time zone.
+    var hour = new Date().getHours();
+    var image;
+
+    if (hour >= 6 && hour < 16) {
+      image = "background/JSYday.jpg";
+    } else if (hour >= 16 && hour < 19) {
+      image = "background/JSYafternoon.jpg";
+    } else {
+      image = "background/JSYnight.jpg";
+    }
+
+    hero.style.backgroundImage = 'url("' + image + '")';
+  }
+
+  updateProfessorHeroBackground();
+  window.setInterval(updateProfessorHeroBackground, 60000);
 })();
 </script>
 
