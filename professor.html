@@ -529,7 +529,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;background-image: url(&quot;background/JSYday.jpg&quot;) ;background-repeat: no-repeat ;background-position: NaN% NaN% ;background-size: 110% ;background-color: transparent ;background-size: 110%;" >
+	<div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 541px;background-image: url(&quot;background/JSYday.jpg&quot;);background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;background-color: transparent;" >
 		<div class="wsite-section-content">
 			
           <div class="container">
@@ -1249,12 +1249,17 @@ th {
 
   function updateHeroBackground() {
     var hero = document.querySelector(
-      ".wsite-header-section.wsite-section-bg-image"
+      "body.wsite-page-professor .banner-wrap .wsite-header-section-bg-image"
     );
+
+    if (!hero) {
+      hero = document.querySelector(
+        "body.wsite-page-professor .banner-wrap .wsite-section-bg-image"
+      );
+    }
 
     if (!hero) return;
 
-    // Uses each visitor's own device/browser local time zone.
     var hour = new Date().getHours();
     var image;
 
@@ -1267,11 +1272,13 @@ th {
     }
 
     hero.style.backgroundImage = 'url("' + image + '")';
+    hero.style.backgroundPosition = "50% 50%";
+    hero.style.backgroundRepeat = "no-repeat";
+    hero.style.backgroundSize = "cover";
   }
 
   updateHeroBackground();
-
-  // Re-check periodically so a page left open across a time boundary updates itself.
+  window.addEventListener("load", updateHeroBackground);
   window.setInterval(updateHeroBackground, 60000);
 })();
 </script>
