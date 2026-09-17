@@ -683,7 +683,7 @@ body.wsite-page-index .wsite-background-5 {
     <div class="banner-wrap">
       <div class="wsite-elements wsite-not-footer wsite-header-elements">
 	<div class="wsite-section-wrap">
-	<div  class="wsite-section wsite-header-section wsite-section-bg-image wsite-section-effect-reveal" style="height: 877px;background-image: url(&quot;day.jpg&quot;) ;background-repeat: no-repeat ;background-position: undefined undefined ;background-size: 100% ;background-color: transparent ;background-size: cover;" >
+	<div  class="wsite-section wsite-header-section wsite-section-bg-image wsite-section-effect-reveal" style="height: 877px;background-image: url(&quot;background/day.jpg&quot;) ;background-repeat: no-repeat ;background-position: undefined undefined ;background-size: 100% ;background-color: transparent ;background-size: cover;" >
 		<div class="wsite-section-content">
 			
           <div class="container">
@@ -1339,14 +1339,22 @@ body.wsite-page-index .wsite-background-5 {
 
     // Uses each visitor's own device/browser local time zone.
     var hour = new Date().getHours();
-    var image = (hour >= 6 && hour < 18) ? "day.jpg" : "night.jpg";
+    var image;
+
+    if (hour >= 6 && hour < 16) {
+      image = "background/day.jpg";
+    } else if (hour >= 16 && hour < 19) {
+      image = "background/afternoon.jpg";
+    } else {
+      image = "background/night.jpg";
+    }
 
     hero.style.backgroundImage = 'url("' + image + '")';
   }
 
   updateHeroBackground();
 
-  // Re-check periodically so a page left open across 06:00 or 18:00 updates itself.
+  // Re-check periodically so a page left open across 06:00, 16:00, or 19:00 updates itself.
   window.setInterval(updateHeroBackground, 60000);
 })();
 </script>
