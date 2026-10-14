@@ -441,7 +441,8 @@ body.wsite-page-members #wsite-content .wsite-image img {
     margin: 0 auto 8px !important;
   }
 
-  /* Member portraits: equal phone-sized cards prevent very tall/large source files from dominating. */
+  /* Member portraits on phones: use a portrait-shaped frame and display the
+     entire source image, so neither heads nor feet are cropped off. */
   body.wsite-page-members #wsite-content .wsite-image-border-thick {
     width: 240px !important;
     max-width: 72vw !important;
@@ -454,13 +455,14 @@ body.wsite-page-members #wsite-content .wsite-image img {
     width: 100% !important;
   }
   body.wsite-page-members #wsite-content .wsite-image-border-thick img {
+    display: block !important;
     width: 240px !important;
-    height: 240px !important;
+    height: 300px !important;
     max-width: 72vw !important;
-    max-height: 72vw !important;
+    max-height: 90vw !important;
     margin: 0 auto !important;
-    object-fit: cover !important;
-    object-position: 50% 25% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
   }
 
   /* Large custom tables should scroll instead of being clipped by the theme container. */
